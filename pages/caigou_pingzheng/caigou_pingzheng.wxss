@@ -1,0 +1,29 @@
+.evidence {
+  min-height: 100vh;
+  padding: 20rpx 26rpx;
+  font-size: 0;
+  background: #fff;
+}
+
+.evidence .img {
+  width: 226rpx;
+  height: 144rpx;
+  margin: 0 10rpx 10rpx 0;
+}
+
+.evidence .img:nth-child(3n) {
+  margin-right: 0; 
+}
+
+.no-result {
+  text-align: center;
+}
+
+.no-result .icon {
+  width: 480rpx;
+}
+
+.no-result .text {
+  font-size: 30rpx;
+  color: #333;
+}

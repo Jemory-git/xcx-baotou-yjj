@@ -1,0 +1,183 @@
+<view class='container'>
+  <view class='header'>
+    <view class='banner'></view>
+    <view class='name-wrapper'>
+      <image lazy-load="true" src='{{jigou_info.headimgurl}}' class='avatar' binderror='imageError' data-img="jigou_info.headimgurl" wx:if='{{jigou_info.headimgurl}}'></image>
+      <image lazy-load="true" src='../images/default_avatar.png' class='avatar' wx:else></image>
+      <view class='org center-text'>{{jigou_info.org_name}}-{{jigou_info.school_name}}</view>
+      <view class='name center-text'>{{jigou_info.name}}</view>
+    </view>
+  </view>
+  <view class='flex'>
+    <view class='flex-item'>
+      <navigator url="/pages/all-jianChaDan/all-jianChaDan?school_id={{jigou_info.school_id}}&org_name={{jigou_info.org_name}}&school_name={{jigou_info.school_name}}&name={{jigou_info.name}}">
+        <image lazy-load="true" src="../images/ic_check.png" class='icon-one'></image>
+        <text class='text'>检查单历史</text>
+      </navigator>
+    </view>
+    <view class='flex-item'>
+      <navigator url="/pages/monitor/monitor?school_id={{jigou_info.school_id}}">
+        <image lazy-load="true" src="../images/ic_monitor.png" class='icon-two'></image>
+        <text class='text'>监控设备</text>
+      </navigator>
+    </view>
+  </view>
+  <view class='license'>
+    <view class='item' wx:for="{{newLicenseList}}" wx:key="{{index}}">
+      <block wx:if="{{index === 0}}">
+        <block wx:if="{{item.license_type == 1}}">
+          <image lazy-load="true" mode="{{index ===  imgId ? 'aspectFit' : 'scaleToFill'}}" src="{{item.license_pic_url}}" class="pic {{index ===  imgId ? 'img-grow' : ''}}" data-img-id="{{index}}" catchtap="yulan_img" data-current-url="{{item.license_pic_url}}"></image>
+          <view class='text'>
+            <text>营业执照</text>
+            <text class='audit-text' wx:if="{{item.is_check == 0}}">(审核)</text>
+            <text class='pass-text' wx:elif="{{item.is_check == 1}}">(已通过)</text>
+            <text class='nopass-text' wx:else="{{item.is_check == -1}}">(未通过)</text>
+            <image lazy-load="true" src='../images/audit.png' class='audit' data-id="{{item.license_id}}" data-index="{{index}}" catchtap='on_tap_shenhe' wx:if="{{user.user_type == 0 && item.is_check == 0}}"></image>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='yyzz same-style'>
+            <text class="zhengjian-name">营业执照</text>
+            <text class="weitian">(暂无)</text>
+          </view>
+        </block>
+      </block>
+      <block wx:if="{{index === 1}}">
+        <block wx:if="{{item.license_type == 2}}">
+          <image lazy-load="true" mode="{{index ===  imgId ? 'aspectFit' : 'scaleToFill'}}" src="{{item.license_pic_url}}" class="pic {{index ===  imgId ? 'img-grow' : ''}}" data-img-id="{{index}}" catchtap="yulan_img" data-current-url="{{item.license_pic_url}}"></image>
+          <view class='text'>
+            <text>食品许可证</text>
+            <text class='audit-text' wx:if="{{item.is_check == 0}}">(审核)</text>
+            <text class='pass-text' wx:elif="{{item.is_check == 1}}">(已通过)</text>
+            <text class='nopass-text' wx:else="{{item.is_check == -1}}">(未通过)</text>
+            <image lazy-load="true" src='../images/audit.png' class='audit' data-id="{{item.license_id}}" data-index="{{index}}" catchtap='on_tap_shenhe' wx:if="{{user.user_type == 0 && item.is_check == 0}}"></image>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='spjyxkz same-style'>
+            <text class="zhengjian-name">食品经营许可证</text>
+            <text class="weitian">(暂无)</text>
+          </view>
+        </block>
+      </block>
+      <block wx:if="{{index === 2}}">
+        <block wx:if="{{item.license_type == 3}}">
+          <image lazy-load="true" mode="{{index ===  imgId ? 'aspectFit' : 'scaleToFill'}}" src="{{item.license_pic_url}}" class="pic {{index ===  imgId ? 'img-grow' : ''}}" data-img-id="{{index}}" catchtap="yulan_img" data-current-url="{{item.license_pic_url}}"></image>
+          <view class='text'>
+            <text>卫生许可证</text>
+            <text class='audit-text' wx:if="{{item.is_check == 0}}">(审核)</text>
+            <text class='pass-text' wx:elif="{{item.is_check == 1}}">(已通过)</text>
+            <text class='nopass-text' wx:else="{{item.is_check == -1}}">(未通过)</text>
+            <image lazy-load="true" src='../images/audit.png' class='audit' data-id="{{item.license_id}}" data-index="{{index}}" catchtap='on_tap_shenhe' wx:if="{{user.user_type == 0 && item.is_check == 0}}"></image>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='wsxkz same-style'>
+            <text class="zhengjian-name">卫生许可证</text>
+            <text class="weitian">(暂无)</text>
+          </view>
+        </block>
+      </block>
+      <block wx:if="{{index > 2}}">
+        <block wx:if="{{item.license_type == 4}}">
+          <image lazy-load="true" mode="{{index ===  imgId ? 'aspectFit' : 'scaleToFill'}}" src="{{item.license_pic_url}}" class="pic {{index ===  imgId ? 'img-grow' : ''}}" data-img-id="{{index}}" catchtap="yulan_img" data-current-url="{{item.license_pic_url}}"></image>
+          <view class='text'>
+            <text wx:if="{{!item.kongbai}}">其他</text>
+            <text class='audit-text' wx:if="{{item.is_check == 0}}">(审核)</text>
+            <text class='pass-text' wx:elif="{{item.is_check == 1}}">(已通过)</text>
+            <text class='nopass-text' wx:elif="{{item.is_check == -1}}">(未通过)</text>
+            <text class='nopass-text' wx:else></text>
+            <image lazy-load="true" src='../images/audit.png' class='audit' data-id="{{item.license_id}}" data-index="{{index}}" catchtap='on_tap_shenhe' wx:if="{{user.user_type == 0 && item.is_check == 0}}"></image>
+          </view>
+        </block>
+      </block>
+    </view>
+  </view>
+  <view class='wrapper'>
+    <view class='title'>
+      <text>采购凭证</text>
+      <navigator wx:if="{{caigouPingzhengList.length > 0}}" url="/pages/caigou_pingzheng/caigou_pingzheng">
+        <image lazy-load="true" src='../images/ic_falldowngrey.png' class='icon'></image>
+      </navigator>
+    </view>
+    <view class='purchases-list'>
+      <block wx:if="{{caigouPingzhengList.length > 0}}">
+        <image lazy-load="true" mode="{{index + 2 ===  imgId ? 'aspectFit' : 'scaleToFill'}}" wx:for="{{caigouPingzhengList}}" wx:if="{{index <= 3}}" wx:key="{{item}}" src="{{item}}" class="pic {{index + 2 ===  imgId ? 'img-grow' : ''}}" data-img-id="{{index + 2}}" catchtap="yulan_img" data-current-url="{{item}}"></image>
+      </block>
+      <view wx:else class="zanwu-tishi">暂无采购凭证</view>
+    </view>
+  </view>
+  <view class='wrapper'>
+    <view class='title'>
+      <text>留样记录</text>
+      <navigator wx:if="{{liuyangJiluList.length > 0}}" url="/pages/liuyang_jilu/liuyang_jilu?school_id={{jigou_info.school_id}}">
+        <image lazy-load="true" src='../images/ic_falldowngrey.png' class='icon'></image>
+      </navigator>
+    </view>
+    <block wx:if="{{liuyangJiluList.length > 0}}">
+      <view class='list'>
+        <view class='item' wx:for="{{liuyangJiluList}}" wx:key="{{item}}" wx:if="{{index < 2}}">
+          <image lazy-load="true" mode="{{index + 3 ===  imgId ? 'aspectFit' : 'scaleToFill'}}" src="{{item.food_img_url}}" class="img {{index + 3 ===  imgId ? 'img-grow' : ''}}" data-img-id="{{index + 3}}" catchtap="yulan_img" data-current-url="{{item.food_img_url}}"></image>
+          <view class='text'>
+            <text class='text-left'>留样物品</text>
+            <text class='text-right'>{{item.food_name}}</text>
+          </view>
+          <view class='text'>
+            <text class='text-left'>储藏地点</text>
+            <text class='text-right'>{{item.food_store_place}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="zanwu-tishi">暂无留样记录</view>
+  </view>
+  <view class='wrapper'>
+    <view class='title'>
+      <text>消毒记录</text>
+      <navigator wx:if="{{xiaoduJiluList.img.length > 0}}" url="/pages/xiaodu_jilu/xiaodu_jilu">
+        <image lazy-load="true" src='../images/ic_falldowngrey.png' class='icon'></image>
+      </navigator>
+    </view>
+    <view class='disin-item'>
+      <block wx:if="{{xiaoduJiluList.img.length > 0}}">
+        <view class='disinfection clearfix'>
+          <image lazy-load="true" wx:for="{{xiaoduJiluList.img}}" wx:key="{{item}}" wx:if="{{index <= 1}}" src='{{item}}' mode="{{index + 4 ===  imgId ? 'aspectFit' : 'scaleToFill'}}" class="img {{index + 4 ===  imgId ? 'img-grow' : ''}}" data-img-id="{{index + 4}}" catchtap="yulan_img" data-current-url="{{item}}"></image>
+        </view>
+        <view class='content'>
+          <view class='text'>
+            <text class='text-l'>消毒物品</text>
+            <text class='text-r over-ellipsis'>{{xiaoduJiluList.disinfect_goods}}</text>
+          </view>
+          <view class='text'>
+            <text class='text-l'>消毒方法</text>
+            <text class='text-r over-ellipsis'>{{xiaoduJiluList.disinfect_method}}</text>
+          </view>
+          <view class='text'>
+            <text class='text-l'>消毒日期</text>
+            <text class='text-r over-ellipsis'>{{xiaoduJiluList.disinfect_date}}</text>
+          </view>
+          <view class='text'>
+            <text class='text-l'>消毒人</text>
+            <text class='text-r over-ellipsis'>{{xiaoduJiluList.name}}</text>
+          </view>
+        </view>
+      </block>
+      <view wx:else class="zanwu-tishi">暂无消毒记录</view>
+    </view>
+  </view>
+  <view class='wrapper'>
+    <view class='title'>
+      <text>食谱菜单</text>
+      <navigator wx:if="{{recipesList.img.length > 0}}" url="/pages/shipu_caidan/shipu_caidan">
+        <image lazy-load="true" src='../images/ic_falldowngrey.png' class='icon'></image>
+      </navigator>
+    </view>
+    <view class='disinfection clearfix'>
+      <block wx:if="{{recipesList.img.length > 0}}">
+        <image lazy-load="true" wx:for="{{recipesList.img}}" wx:if="{{index <= 1}}" wx:key="{{item}}" src='{{item}}' mode="{{index + 5 ===  imgId ? 'aspectFit' : 'scaleToFill'}}" class="img {{index + 5 ===  imgId ? 'img-grow' : ''}}" data-img-id="{{index + 5}}" catchtap="yulan_img" data-current-url="{{item}}"></image>
+      </block>
+      <view wx:else class="zanwu-tishi">暂无食谱菜单</view>
+    </view>
+    <text class='desc'>{{recipesList.pre_install}}</text>
+  </view>
+</view>

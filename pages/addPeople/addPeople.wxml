@@ -1,0 +1,51 @@
+<view class="add-people">
+  <form bindsubmit="formSubmit">
+    <input name="user_id" value="{{user.userId}}" style="display:none"></input>
+    <view class='item' bindtap='select_touxiang'>
+      <text class='text'>头像</text>
+      <input name="head_img_url" value="{{uploadAvatar}}" style="display:none"></input>
+      <image src="{{avatar}}" class='avatar'></image>
+    </view>
+    <view class='item'>
+      <text class='text'>姓名</text>
+      <input class='text-right' placeholder='请输入姓名' type="text" maxlength="10" bindblur="name_input_blur" name="name" value="{{name}}"></input>
+    </view>
+    <view class='item'>
+      <text class='text'>绑定人员卡号</text>
+      <input class='text-right' placeholder='请输入卡号' type="number" maxlength="20" bindblur="card_input_blur" name="card_no" value="{{cardNum}}"></input>
+    </view>
+    <view class='zhiwei-item' bindtap='select_zhiwei'>
+      <view class="item">
+        <text class='text'>职位</text>
+        <view>
+          <text class='select-position'>{{pos}}</text>
+          <image src="../images/ic_down.png" class='down-icon'></image>
+        </view>
+      </view>
+      <radio-group name="user_type" class="select {{showSelection ? 'show-zhiwei-height' : ''}}" bindchange="radioChange">
+        <label class='select-item' wx:for="{{selections}}" wx:key="{{item}}" catchtap='stopprogation'>
+          <radio value="{{item.code}}" />
+          <image src="{{item.checked ? '../images/selected.png' : '../images/uncheck.png'}}" class='icon'></image>
+          <text class='text'>{{item.pos}}</text>
+        </label>
+      </radio-group>
+    </view>
+    <view class='item'>
+      <text class='text'>手机号</text>
+      <input class='text-right' placeholder='请输入手机号码' type="number" maxlength="11" bindblur="phone_input_blur" name="phone" value="{{tel}}"></input>
+    </view>
+    <view class='item'>
+      <text class='text'>所辖片区</text>
+      <view class="area-picker-view">
+        <input name="area_code" value="{{selectedCode}}" style="display:none"></input>
+        <picker class="picker" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{0}}" range="{{shengShiQuArr}}">
+          <text class='addr-select'>
+            {{shengShiQuArr[0]}}-{{shengShiQuArr[1]}}-{{shengShiQuArr[2]}}
+          </text>
+        </picker>
+        <image src="../images/ic_down.png" class='down-icon'></image>
+      </view>
+    </view>
+    <button formType="submit" class='complete completed'>完成</button>
+  </form>
+</view>

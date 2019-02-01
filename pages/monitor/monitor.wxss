@@ -1,0 +1,66 @@
+
+.channel {
+  padding: 0 26rpx;
+  margin-top: 40rpx; 
+}
+
+.channel .channel-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.monitor {
+  position: relative;
+  height: 360rpx;
+  margin-top: 20rpx;
+}
+
+.monitor .img {
+  width: 698rpx;
+  height: 360rpx;
+}
+
+.monitor .place {
+  position: absolute;
+  left:0;
+  bottom: 0;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: rgba(255,255,255,0.6);
+}
+
+.monitor .icon {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 6rpx;
+  vertical-align: middle;
+}
+
+.monitor .text {
+  font-size: 30rpx;
+  color: #646464;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.no-result {
+  text-align: center;
+}
+
+.no-result .icon {
+  width: 480rpx;
+}
+
+.no-result .text {
+  font-size: 30rpx;
+  color: #333;
+} 

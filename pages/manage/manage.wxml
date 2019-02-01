@@ -1,0 +1,57 @@
+<view class="wrapper">
+  <view class='manage-header' wx:if="{{user.user_type == 0}}">
+    <view class='header-l'>
+      <text class='text-l' bindtap='manage' wx:if="{{!isManage}}">管理</text>
+      <text wx:else bindtap='toggleAll'>
+        <text class='text-l' wx:if="{{showSelectAll}}">全选</text>
+        <text class='text-l' wx:else>全不选</text>
+      </text>
+    </view>
+    <view class='header-r'>
+      <view class='right' wx:if="{{!isManage}}">
+        <navigator url="/pages/addPeople/addPeople">
+          <text class='text-r'>人员添加</text>
+          <image src="../images/ic_addhuman.png" class='icon'></image>
+        </navigator>
+      </view>
+      <text class='cancel' bindtap='cancel' wx:else>取消</text>
+    </view>
+  </view>
+  <view class='behind-top' wx:if="{{user.user_type == 0}}">数据加载中...</view>
+  <view class='container' wx:if="{{showListBoo === true}}">
+    <view class='manager {{isManage ? "translate" : ""}}' wx:for="{{showingArr}}" wx:key="{{item}}" data-index="{{index}}" bindtap='select'>
+      <view class='check-icon'>
+        <image src="{{item.checked ? '../images/checked.png' : '../images/uncheck.png'}}" class='icon'></image>
+      </view>
+      <view class='header'>
+        <image src="{{item.head_img_url}}" class='avatar' binderror='imageError' data-img="showingArr[{{index}}].head_img_url" wx:if="{{item.head_img_url}}"></image>
+        <image src="../images/default_avatar.png" class='avatar' wx:else></image>
+        <text class='name over-ellipsis'>{{item.name}}</text>
+        <text class='position'>{{item.user_type==0? '管理员':'检查员'}}</text>
+      </view>
+      <view class='text'>
+        <text class='left'>辖区：</text>
+        <text class='bold over-ellipsis'>{{item.xiaqu[2].name}}-{{item.xiaqu[1].name}}-{{item.xiaqu[0].name}}</text>
+      </view>
+      <view class='text'>
+        <view class='tel' wx:if="{{item.card_no}}">
+          <text class='left'>卡号：</text>
+          <text class='right'>{{item.card_no}}</text>
+        </view>
+        <view class='tel' wx:if="{{item.phone}}">
+          <text class='left'>手机号：</text>
+          <text class='bold'>{{item.phone}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='no-result' wx:elif="{{showListBoo === false}}">
+    <image src="../images/ic_nophoto.png" class='icon'></image>
+    <view class='text'>没有找到相关内容</view>
+  </view>
+  <view class="delete {{selectedArr.length > 0 ? '' :'hidden'}}" bindtap="confirmDelete">
+    删除(
+    <text class='count'>{{selectedArr.length}}</text>
+    )
+  </view>
+</view>

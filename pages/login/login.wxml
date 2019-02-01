@@ -1,0 +1,22 @@
+<view class='login'>
+  <view class='header'>
+    <!-- <navigator url="/pages/inspectEdit/inspectEdit?si=578&fui=4">检查表单页(临时入口)</navigator> -->
+    <image src="../images/login_bg.png" class='login-bg'></image>
+  </view>
+  <view class='content'>
+    <form bindsubmit="formSubmit" class="form">
+      <view class='input-wrapper'>
+        <image src="../images/login_user.png" class='icon'></image>
+        <input type="number" name="phone" maxlength="11" placeholder='请输入手机号码' class='input' bindblur="inputTel"></input>
+      </view>
+      <view class='input-wrapper'>
+        <image src="../images/login_code.png" class='icon'></image>
+        <input type="number" name="code" value="{{yzm_value}}" maxlength="6" placeholder='验证码输入' class='code-input'></input>
+        <view class='button' bindtap='getCode'>{{verifyCodeTime}}</view>
+      </view>
+      <button formType="submit" class='login-btn'>
+        <image src='../images/login_btn.png' class='btn-img'></image>
+      </button>
+    </form>
+  </view>
+</view>

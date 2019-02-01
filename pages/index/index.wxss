@@ -1,0 +1,217 @@
+.index-container {
+  overflow: hidden;
+  min-height: 100vh;
+  background: #f9f9f9;
+}
+
+.header {
+  padding: 40rpx 30rpx;
+}
+
+.avatar {
+  float: left;
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 20rpx;
+}
+
+.avatar .img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.user {
+  display: inline-block;
+  font-size: 0;
+}
+
+.user .username {
+  margin: 15rpx 0;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.user .department {
+  width: 300rpx;
+  font-size: 26rpx;
+  color: #626262;
+}
+
+.header .checkform {
+  float: right;
+  width: 224rpx;
+  height: 72rpx;
+  margin-top: 24rpx;
+  line-height: 72rpx;
+  text-align: center;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.header .checkform-img {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+
+.header .text {
+  font-size: 24rpx;
+  color: #adadad;
+}
+
+.org-count {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding: 0 30rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.org-count .text {
+  font-size: 24rpx;
+  color: #adadad;
+}
+
+.org-count .count {
+  font-weight: 700;
+  color: #646464;
+}
+
+.org-container {
+  padding: 0 30rpx;
+}
+
+.org {
+  padding: 20rpx 24rpx;
+  margin-bottom: 20rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.org .mark {
+  width: 50rpx;
+  height: 8rpx;
+  margin-bottom: 20rpx;
+}
+
+.org-title {
+  margin: 20rpx 0 10rpx;
+}
+
+.org .org-name {
+  float: left;
+  width: 550rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.org .org-leading {
+  float: right;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.rectification {
+  float: right;
+  width: 180rpx;
+  height: 66rpx;
+  margin-top: -20rpx;
+  margin-right: -26rpx;
+  line-height: 66rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #adadad;
+  background: #eee;
+  border-radius: 10rpx 0 0 10rpx;
+}
+
+.date-container {
+  padding: 10rpx 0 5rpx 0;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #adadad;
+}
+
+.date-container .icon {
+  width: 24rpx;
+  height: 26rpx;
+  margin-right: 12rpx;
+  vertical-align: -2rpx;
+}
+
+.no-result {
+  text-align: center;
+}
+
+.no-result .icon {
+  width: 480rpx;
+}
+
+.no-result .text {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.zhenggai-content {
+  padding: 10rpx;
+  margin-bottom: 10rpx;
+  background: #f4f4f4;
+  border-bottom: 1px solid #fff;
+}
+
+.zhenggai-content .zhenggai-item {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  margin: 10rpx auto;
+  font-size: 26rpx;
+  color: #adadad;
+}
+
+.zhenggai-content .zhenggai-item .item-index {
+  width: 7%;
+}
+
+.zhenggai-content .zhenggai-item .item-text {
+  width: 93%;
+  letter-spacing: 1px;
+  line-height: 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jianchayuan {
+  display: flex;
+}
+
+.jianchayuan .zjcy {
+  margin-right: 1rem;
+  padding-left: 36rpx;
+}
+.jianchayuan .fjcy,
+.jianchayuan .zjcy{
+  display: flex;
+}
+.jianchayuan .zjcy .value,
+.jianchayuan .fjcy .value {
+  width: 120rpx;
+  padding: 0 0.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,32 @@
+.recipe {
+  min-height: 100vh;
+  padding: 20rpx 26rpx;
+  font-size: 0;
+  background: #fff;
+}
+
+.recipe .img {
+  width: 344rpx;
+  height: 196rpx;
+  margin: 0 4rpx 4rpx 0;
+}
+
+.recipe .text {
+  margin-top: 20rpx;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.no-result {
+  text-align: center;
+}
+
+.no-result .icon {
+  width: 480rpx;
+}
+
+.no-result .text {
+  font-size: 30rpx;
+  color: #333;
+}

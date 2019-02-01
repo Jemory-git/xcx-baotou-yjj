@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#ffcd33",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "校区详情",
+  "backgroundColor": "#ffcd33",
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,43 @@
+<view class='inspect-container' wx:if="{{showListBoo === true}}">
+  <view class='header'>
+    <view class='left'>
+      <image src='../images/ic_position.png' class='icon'></image>
+    </view>
+    <text class='text'>{{address}}</text>
+  </view>
+  <view class='header campus'>
+    <view class='left'>
+      <image src='../images/ic_school.png' class='icon'></image>
+    </view>
+    <text class='text'>{{jigouName}}</text>
+  </view>
+  <view class='detail' wx:for="{{checkList}}" wx:key="{{index}}">
+    <view class='title'>{{item.check_title}}</view>
+    <view class='content' wx:for="{{item.detail}}" wx:key="{{index}}">
+      <view class='text'>{{item.check_content}}</view>
+      <view class='button success' wx:if="{{item.check_status == 1}}">符合</view>
+      <view class='button warning' wx:elif="{{item.check_status == 2}}">基本符合</view>
+      <view class='button error' wx:elif="{{item.check_status == 3}}">不符合</view>
+      <view class='button quexiang' wx:elif="{{item.check_status == 4}}">合理缺项</view>
+    </view>
+  </view>
+  <view class='detail' wx:if="{{contentList !== null}}">
+    <view class='title'>需要整改内容</view>
+    <view class='zhenggai-content'>
+      <view class="zhenggai-item" wx:for="{{contentList}}" wx:key="item">
+        <text class="item-index">{{index + 1}}、</text>
+        <text class="item-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='detail img-list' wx:if="{{imgs !== null && imgs.length > 0}}">
+    <view class='title'>不合格项照片</view>
+    <image mode="aspectFit" wx:for="{{imgs}}" wx:key="{{item}}" src="{{item}}" mode="{{index ===  imgId ? 'aspectFit' : 'scaleToFill'}}" class="img {{index === imgId ? 'img-grow' : ''}}" data-img-id="{{index}}" catchtap='prevImg' data-src="{{item}}"></image>
+    <!-- <image wx:for="{{imgs}}" wx:key="{{item}}" src="http://es6.ruanyifeng.com/images/cover-3rd.jpg" class='img' catchtap='prevImg' data-src="http://es6.ruanyifeng.com/images/cover-3rd.jpg"></image> -->
+    <!-- <image wx:for="{{imgs}}" wx:key="{{item}}" src="{{item}}" class='img'></image> -->
+  </view>
+</view>
+<view class='no-result' wx:elif="{{showListBoo === false}}">
+  <image src="../images/ic_nophoto.png" class='icon'></image>
+  <view class='text'>没有找到相关内容</view>
+</view>

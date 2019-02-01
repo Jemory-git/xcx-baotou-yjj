@@ -1,0 +1,61 @@
+.disinfect {
+  min-height: 100vh;
+  padding: 20rpx 26rpx;
+  font-size: 0;
+  background: #fff;
+}
+.item {
+  margin-bottom: 50rpx;
+}
+
+.disinfect .img {
+  width: 344rpx;
+  height: 196rpx;
+  margin: 0 4rpx 4rpx 0;
+}
+
+.disinfect .img:nth-child(2n) {
+  margin-right: 0;
+}
+
+.content {
+  padding: 40rpx 26rpx 0;
+}
+
+.content .text {
+  margin-bottom: 20rpx;
+  font-size: 0rpx;
+  color: #333;
+}
+
+.content .text:last-child {
+  margin-bottom: 0;
+}
+
+.content .text-l {
+  display: inline-block;
+  width: 190rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.content .text-r {
+  display: inline-block;
+  width: 450rpx;
+  vertical-align: top;
+  font-size: 26rpx;
+  color: #adadad;
+}
+
+.no-result {
+  text-align: center;
+}
+
+.no-result .icon {
+  width: 480rpx;
+}
+
+.no-result .text {
+  font-size: 30rpx;
+  color: #333;
+}

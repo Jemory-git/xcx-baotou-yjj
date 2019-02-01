@@ -1,0 +1,9 @@
+<view class='wrapper'>
+	<video class="video" 
+	  controls="true" 
+    autoplay="true"
+    show-fullscreen-btn="true"
+		src="{{source}}"
+	>
+	</video>
+</view>

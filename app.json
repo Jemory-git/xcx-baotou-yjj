@@ -1,0 +1,66 @@
+{
+  "pages":[
+    "pages/enter/enter",
+    "pages/inspectEdit/inspectEdit",    
+    "pages/addPeople/addPeople",    
+    "pages/login/login",    
+    "pages/organization/organization",    
+    "pages/manage/manage",    
+    "pages/mine/mine",    
+    "pages/index/index",    
+    "pages/video/video",
+    "pages/monitor/monitor",    
+    "pages/all-jianChaDan/all-jianChaDan",    
+    "pages/newTel/newTel",    
+    "pages/changeTel/changeTel",    
+    "pages/inspect/inspect",   
+    "pages/all-jigou-4item/all-jigou-4item",
+    "pages/shipu_caidan/shipu_caidan",
+    "pages/jigou-more-info/jigou-more-info",
+    "pages/xiaodu_jilu/xiaodu_jilu",
+    "pages/liuyang_jilu/liuyang_jilu",
+    "pages/caigou_pingzheng/caigou_pingzheng"
+  ],
+  "window":{
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#F5C539",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/imgs/ic_home.png",
+        "selectedIconPath": "assets/imgs/ic_home1.png"
+      },
+      {
+        "text": "厨房",
+        "pagePath": "pages/organization/organization",
+        "iconPath": "assets/imgs/ic_kitchen.png",
+        "selectedIconPath": "assets/imgs/ic_kitchen1.png"
+      },
+      {
+        "text": "管理",
+        "pagePath": "pages/manage/manage",
+        "iconPath": "assets/imgs/manage.png",
+        "selectedIconPath": "assets/imgs/manage_active.png"
+      }, 
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "assets/imgs/ic_mine.png",
+        "selectedIconPath": "assets/imgs/ic_mine1.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class='index-container'>
+  <view class='header'>
+    <view class='avatar'>
+      <image src='{{user.head_img_url}}' binderror='imageError' data-img="user.head_img_url" class='img'></image>
+    </view>
+    <view class='user'>
+      <view class='username'>{{user.username}}</view>
+      <view class='department over-ellipsis'>{{userAreaStr}}</view>
+    </view>
+    <!-- <view class='checkform'>
+      <image  src='../images/ic_details.png' class='checkform-img'></image>
+      <text class='text'>所有检查单</text>
+    </view> -->
+    <navigator url="/pages/all-jianChaDan/all-jianChaDan" class='checkform'>
+      <image src='../images/ic_details.png' class='checkform-img'></image>
+      <text class='text'>所有检查单</text>
+    </navigator>
+  </view>
+  <view class='org-count'>
+    <view class='text'>检查机构数： <text class='count'>{{checkMsg.today_check_num || 0}}</text> 家</view>
+    <view class='text'>检查不合格数： <text class='count'>{{checkMsg.today_passcheck_num || 0}}</text> 家</view>
+    <view class='text'>累计不合格数： <text class='count'>{{checkMsg.total_unpasscheck_num || 0}}</text> 家</view>
+  </view>
+  <view class='org-container' wx:if="{{hasInfo === true}}">
+    <view class='org' wx:for="{{checkList}}" wx:key="{{index}}"
+      data-check_id="{{item.check_id}}"
+      data-jigou_name="{{item.org_name}}-{{item.school_name}}"
+      bindtap='gotoInspect'>
+      <text class="{{item.last_day > 7 ? 'btn-primary' : item.last_day > 3 ? 'btn-warning' : 'btn-danger'}}">距下次核查时间：剩{{item.last_day || 0}}天</text>
+      <view class='org-title clearfix'>
+       <text class='org-name over-ellipsis'>{{item.org_name}}-{{item.school_name}}</text>
+        <text class='org-leading'>{{item.name}}</text>
+      </view>
+      <view class='zhenggai-content'>
+        <view class="zhenggai-item" wx:for="{{item.correct_content}}" wx:for-index="idx" wx:for-item="subitem" wx:key="subitem">
+          <text class="item-index">{{idx + 1}}、</text>
+          <text class="item-text">{{subitem}}</text>
+        </view>
+      </view>
+      <!-- <view class='clearfix'>
+       <view class="rectification" wx:if="{{item.check_status_id == 4}}">已整改</view>
+     </view> -->
+      <view class='date-container jianchayuan'>
+        <view class="zjcy">
+          <text class="key">主检查员：</text>
+          <text class="value">{{item.main_inspector_name || '' }}</text>
+        </view>
+        <view class="fjcy">
+          <text class="key">副检查员：</text>
+          <text class="value">{{item.inspector_name || ''}}</text>
+        </view>
+     </view>
+      <view class='date-container'>
+        <image src='../images/ic_clock.png' class='icon'></image>
+       <text>检查时间：</text>
+       <text class='date'>{{item.check_time}}</text>
+     </view>
+    </view>
+  </view>
+  <view class='no-result' wx:elif="{{hasInfo === false}}">
+    <image src="../images/ic_nophoto.png" class='icon'></image>
+    <view class='text'>没有找到相关内容</view>
+  </view>
+</view>

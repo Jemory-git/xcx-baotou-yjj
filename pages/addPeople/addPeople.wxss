@@ -1,0 +1,119 @@
+.add-people {
+  padding: 0 26rpx;
+}
+
+radio {
+  display: none;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 150rpx;
+  padding: 0 24rpx 0 20rpx;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.zhiwei-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.zhiwei-item .item {
+  border-bottom: 1px solid #fff;
+}
+
+.text {
+  width: 250rpx;
+  font-size: 30rpx;
+  color: #646464;
+}
+
+.item .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+}
+
+.item .text-right {
+  text-align: right;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.item .select-position {
+  font-size: 30rpx;
+  color: #888;
+}
+
+.addr-select {
+  font-size: 30rpx;
+  color: #888;
+}
+
+.down-icon {
+  width: 24rpx;
+  height: 16rpx;
+  margin-left: 10rpx;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  height: 0;
+  border-bottom: 1px solid #f4f4f4;
+  transition: all 0.3s ease-out;
+  overflow: hidden;
+}
+
+.select .select-item {
+  flex: 1;
+  text-align: center;
+}
+
+.select .icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+  vertical-align: -4rpx;
+}
+
+.select .text {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.show-zhiwei-height {
+  height: 134rpx;
+}
+
+.complete {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #333;
+  background: #f4f4f4;
+  border-radius: 0;
+}
+
+.completed {
+  background: #ffcc34;
+}
+
+.area-picker-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.picker {
+  height: 150rpx;
+}

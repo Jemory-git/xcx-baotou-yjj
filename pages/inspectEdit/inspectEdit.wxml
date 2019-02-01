@@ -1,0 +1,158 @@
+<view class="page">
+  <scroll-view class="scroll-view-height" wx:if="{{showListBoo}}" scroll-y="{{true}}" scroll-into-view="{{scrollto_which_id}}" scroll-with-animation="{{true}}">
+    <view class='inspect-container'>
+      <view class='header address'>
+        <view class='left'>
+          <image src='../images/ic_position.png' class='icon'></image>
+        </view>
+        <text class='text' catchtap="quanxuan">{{address}}</text>
+      </view>
+      <view class='header campus'>
+        <view class='left'>
+          <image src='../images/ic_school.png' class='icon'></image>
+        </view>
+        <text class='text'>{{school_info.org_name}}-{{school_info.school_name}}</text>
+      </view>
+      <view class="fujianchayuan detail">
+        <text class="fjcy title">副检查员</text>
+        <input class="fjcy-input" name="fjcy" bindinput="onfjcyinput" maxlength="10" placeholder="请填写副检查员"  placeholder-class="placeholder"></input>
+      </view>
+      <view class='detail' wx:for="{{checkList}}" wx:key="{{item}}">
+        <view class='title'>{{item.check_title}}</view>
+        <view class='content' wx:for="{{item.content}}" wx:for-item="subItem" wx:for-index="itemIndex" wx:key="{{subItem}}" id="id_{{item.check_id}}_{{subItem.content_id}}" bindtap='showBtns' data-title="{{item.check_title}}" data-check_id="{{item.check_id}}" data-content="{{subItem.check_content}}" data-content_id="{{subItem.content_id}}">
+          <view class='text'>{{subItem.check_content}}</view>
+          <view class='button success' wx:if="{{subItem.check_status_code == 1}}">符  合</view>
+          <view class='button warning' wx:elif="{{subItem.check_status_code == 2}}">基本符合</view>
+          <view class='button error' wx:elif="{{subItem.check_status_code == 3}}">不符合</view>
+          <view class='button quexiang' wx:elif="{{subItem.check_status_code == 4}}">合理缺项</view>
+          <view class='button not-filled' wx:else>未填</view>
+        </view>
+      </view>
+      <view class='detail'>
+        <view class='title'>年度等级</view>
+        <view class='content' catchtap='showLevel'>
+          <image src="{{levelImg}}" class='icon'></image>
+          <image src="../images/ic_down.png" class='down'></image>
+        </view>
+      </view>
+      <view class='detail'>
+        <view class='title'>动态等级</view>
+        <view class='content' catchtap='showFace'>
+          <image src="{{faceImg}}" class='face-icon'></image>
+          <image src="../images/ic_down.png" class='down'></image>
+        </view>
+      </view>
+      <view class='detail'>
+        <view class='img-list-title'>
+          <text class="bhgxzp">整改内容</text>
+          <text class="sczp" catchtap="openEditView">
+            {{textarea_value_arr.length > 0 ? "增加" : "输入"}}整改项
+          </text>
+        </view>
+        <view class='zhenggai-item-wrapper' wx:if="{{textarea_value_arr.length > 0}}">
+          <view class="zhenggai-item" wx:for="{{textarea_value_arr}}" wx:key="item">
+            <text class="item-index">{{index + 1}}、</text>
+            <text class="item-text">{{item}}</text>
+            <view class="button-wrapper">
+              <text class="modify-btn btns" catchtap="modify_this_item" data-index="{{index}}">
+                修改
+              </text>
+              <text class="delete-btn btns" catchtap="delete_this_item" data-index="{{index}}">
+                删除
+              </text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='detail'>
+        <view class='title'>下次核查时间</view>
+        <view class='content'>
+          <picker class="picker" mode="date" value="{{zhengGaiObj.datePicker_value}}" start="{{now}}" bindchange="bindDateChange">
+            <view>
+              <text>选择时间：{{zhengGaiObj.datePicker_value}}</text>
+              <image src="../images/ic_down.png" class='down mt-20'></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='img-list-title'>
+        <text class="bhgxzp">不合格项照片</text>
+        <!-- <text class="sczp" catchtap="manageImgList">管理</text> -->
+        <text class="sczp"></text>
+      </view>
+      <view class='img-list'>
+        <view class="single-img-wrapper" wx:for="{{added_imgs}}" wx:key="{{item}}" wx:if="{{index < 8}}">
+          <image src="{{item}}" mode="{{index ===  imgId ? 'aspectFit' : 'scaleToFill'}}" class="img {{index === imgId ? 'img-grow' : ''}}" data-img-id="{{index}}" data-src="{{item}}" bindtap="prevImg"></image>
+          <image src="../images/ic_close.png" class="deleteimg-btn" wx:if="{{showDeleteBtnBoo}}" catchtap="deleteImg" id="{{index}}"></image>
+        </view>
+        <view class="single-img-wrapper">
+          <image src='../images/ic_add.png' class='add-img' catchtap="add_img" wx:if="{{added_imgs.length < 8}}"></image>
+        </view>
+      </view>
+      <button class='commit' catchtap='onsubmit'>确认提交</button>
+    </view>
+    <view class="select-wrapper {{showBtnsBoo ? 'show' : ''}}" catchtouchmove="ture" catchtap="hideBtns">
+      <view class='select-content' catchtap="stop_propagation">
+        <view class='select-title'>{{selectingItem.title}}</view>
+        <view class='text over-ellipsis'>{{selectingItem.content}}</view>
+        <view class='options four-btns-wrapper' catchtap="select">
+          <view class='button success' data-status_code="1">符  合</view>
+          <view class='button warning' data-status_code="2">基本符合</view>
+          <view class='button error' data-status_code="3">不符合</view>
+          <view class='button quexiang' data-status_code="4">合理缺项</view>
+        </view>
+      </view>
+    </view>
+    <view class="select-wrapper {{showLevel ? 'show' : ''}}" catchtouchmove="ture">
+      <view class='select-content'>
+        <view class='select-title'>年度等级</view>
+        <input name="annual_level" value='{{level}}' style="display:none"></input>
+        <view class='options'>
+          <image class='level-icon' wx:for="{{levels}}" wx:key="{{item}}" src="{{item.url}}" data-code="{{item.code}}" data-img="{{item.url}}" catchtap='selectLevel'></image>
+        </view>
+      </view>
+    </view>
+    <view class="select-wrapper {{showFace ? 'show' : ''}}" catchtouchmove="ture">
+      <view class='select-content'>
+        <view class='select-title'>动态等级</view>
+        <input name="annual_level" value='{{face}}' style="display:none"></input>
+        <view class='options'>
+          <image class='face-icon' wx:for="{{faces}}" wx:key="{{item}}" src="{{item.url}}" data-code="{{item.code}}" data-img="{{item.url}}" catchtap='selectFace'></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="edit-view-wrapper {{showEditViewBoo ? 'show-edit-view' : ''}}">
+    <view class="sub-wrapper">
+      <!-- <view class="close-edit-view">
+        <image src="../images/ic_close.png" class="close-edit-btn" mode="aspectFit" catchtap="closeEditView"></image>
+      </view> -->
+      <view class="text-area-view">
+        <textarea class="text-area" type="text" maxlength="-1" placeholder='在此输入内容' focus="{{focus_input_boo}}" bindconfirm="completeEdit" bindinput='on_textarea_input' value="{{editingText}}"></textarea>
+        <button class="complete-btn" type="primary" size="mini" catchtap="completeEdit">完成</button>
+      </view>
+      <!-- <view class="button-view">
+        <button class="btn edit-next-item" size="mini" catchtap="editNextItem" disabled="{{modifyingBoo}}">
+          下一项
+        </button>
+        <button class="btn complete-edit" size="mini" catchtap="completeEdit">完成</button>
+      </view>
+      <scroll-view class="completed-item-scroll-view" scroll-y="{{true}}">
+        <view class='zhenggai-item-wrapper' wx:if="{{textarea_value_arr.length > 0}}">
+          <view class="zhenggai-item" wx:for="{{textarea_value_arr}}" wx:key="item">
+            <text class="item-index">{{index + 1}}、</text>
+            <text class="item-text">{{item}}</text>
+            <view class="button-wrapper">
+              <text class="modify-btn btns" catchtap="modify_this_item" data-index="{{index}}">
+                修改
+              </text>
+              <text class="delete-btn btns" catchtap="delete_this_item" data-index="{{index}}">
+                删除
+              </text>
+            </view>
+          </view>
+        </view>
+      </scroll-view> -->
+    </view>
+  </view>
+</view>

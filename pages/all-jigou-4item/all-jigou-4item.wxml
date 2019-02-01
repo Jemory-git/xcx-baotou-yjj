@@ -1,0 +1,46 @@
+<view class='search-wrapper'>
+  <image src='../images/ic_find.png' class='search-icon'></image>
+  <input class='search' type="text" placeholder='搜索机构名称' maxlength="15" value='{{searchValue}}' bindinput="on_search_input"></input>
+  <picker class='addr-select' mode="multiSelector" bindchange="pickerChange" bindcolumnchange="pickerColumnChange" range="{{shengShiQuArr}}">
+    <text class='text'>辖区</text>
+    <image src='../images/ic_down.png' class='icon' id='iconDown'></image>
+  </picker>
+</view>
+<view class="org-detail" wx:if="{{hasInfo && showingList.length !== 0}}">
+  <view class="org-list">
+    <view class="item" wx:for="{{showingList}}" wx:key="index">
+      <image src="{{item.headimgurl}}" class='avatar' binderror='imageError' data-img="showingList[{{index}}].rheadimgurl" wx:if="{{item.headimgurl}}"></image>
+      <image src="../images/default_avatar.png" class='avatar' wx:else></image>
+      <view class='org'>
+        <view class='org-name over-ellipsis'>{{item.org_name}}</view>
+        <view class='org-leader'>{{item.name}}</view>
+      </view>
+      <view class='options'>
+        <view class='option-item'>
+          <image src="../images/unreciped.png" class='icon-1' wx:if="{{item.day_food_num == 0}}"></image>
+          <image src="../images/reciped.png" class='icon-1' wx:else></image>
+          <view class='text'>食谱添加</view>
+        </view>
+        <view class='option-item'>
+          <image src="../images/unpurchased.png" class='icon-2' wx:if="{{item.purchase_receipt_num == 0}}"></image>
+          <image src="../images/purchased.png" class='icon-2' wx:else></image>
+          <view class='text'>采购小票</view>
+        </view>
+        <view class='option-item'>
+          <image src="../images/undisinfected.png" class='icon-3' wx:if="{{item.disinfect_num == 0}}"></image>
+          <image src="../images/disinfected.png" class='icon-3' wx:else></image>
+          <view class='text'>消毒记录</view>
+        </view>
+        <view class='option-item'>
+          <image src="../images/unreserved.png" class='icon-4' wx:if="{{item.food_sample_num == 0}}"></image>
+          <image src="../images/reserved.png" class='icon-4' wx:else></image>
+          <view class='text'>留样记录</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='no-result' wx:else>
+  <image src="../images/ic_nophoto.png" class='icon'></image>
+  <view class='text'>没有找到相关内容</view>
+</view>

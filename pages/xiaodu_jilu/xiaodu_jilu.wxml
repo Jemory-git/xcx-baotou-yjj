@@ -1,0 +1,27 @@
+<view class="disinfect" wx:if="{{xiaoduJiluList.name != ''}}">
+<view class='item'>
+  <image wx:for="{{xiaoduJiluList.img}}" wx:key="{{item}}" src="{{item}}" mode="{{index ===  imgId ? 'aspectFit' : 'scaleToFill'}}" class="img {{index ===  imgId ? 'img-grow' : ''}}" data-img-id="{{index}}" catchtap="yulan_img" data-current-url="{{item}}"></image>
+  <view class='content'>
+    <view class='text'>
+      <text class='text-l'>消毒物品</text>
+      <text class='text-r over-ellipsis'>{{xiaoduJiluList.disinfect_goods}}</text>
+    </view>
+    <view class='text'>
+      <text class='text-l'>消毒方法</text>
+      <text class='text-r over-ellipsis'>{{xiaoduJiluList.disinfect_method}}</text>
+    </view>
+    <view class='text'>
+      <text class='text-l'>消毒日期</text>
+      <text class='text-r over-ellipsis'>{{xiaoduJiluList.disinfect_date}}</text>
+    </view>
+    <view class='text'>
+      <text class='text-l'>消毒人</text>
+      <text class='text-r over-ellipsis'>{{xiaoduJiluList.name}}</text>
+    </view>
+  </view>
+</view>
+</view>
+<view class='no-result' wx:else>
+  <image src="../images/ic_nophoto.png" class='icon'></image>
+  <view class='text'>没有找到相关内容</view>
+</view>

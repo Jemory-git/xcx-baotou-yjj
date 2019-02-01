@@ -1,0 +1,176 @@
+.org-container {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.header-list {
+  padding: 30rpx 0 0 30rpx;
+  font-size: 0;
+}
+
+.header-list .item {
+  display: inline-block;
+  margin-right: 40rpx;
+  font-size: 30rpx;
+  color: #646464;
+}
+
+.header-list .un-text {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.header-list .text {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #adadad;
+}
+
+.list {
+  display: inline-block;
+  font-size: 26rpx;
+  color: #adadad;
+}
+
+.list .img {
+  width: 44rpx;
+  height: 48rpx;
+  margin-right: 10rpx;
+  vertical-align: bottom;
+}
+
+.search-wrapper {
+  position: relative;
+  padding: 30rpx 26rpx;
+}
+
+.search-wrapper .search-icon {
+  position: absolute;
+  left: 50rpx;
+  top: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.search-wrapper .search {
+  display: inline-block;
+  width: 63%;
+  height: 60rpx;
+  padding: 0 20rpx 0 80rpx;
+  margin-right: 36rpx;
+  font-size: 30rpx;
+  background: #e5e5e5;
+  border-radius: 60rpx;
+  vertical-align: top;
+}
+
+.addr-select {
+  display: inline-block;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.addr-select .text {
+  margin-right: 14rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.addr-select .icon {
+  width: 24rpx;
+  height: 16rpx;
+}
+
+/* .shadow {
+  height: 60rpx;
+  box-shadow: 0 20rpx 20rpx  #f9f9f9 inset; 
+} */
+
+.org-list .item {
+  padding: 20rpx 26rpx 30rpx;
+  font-size: 0;
+}
+
+.org-list .item .name-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.org {
+  width:0rpx;
+  flex-grow: 1;
+  text-align: left;
+  padding-left: 10rpx;
+}
+
+.org-name {
+  width: 100%;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.org-leader {
+  font-size: 26rpx;
+  color: #646464;
+}
+
+.more-right {
+  width: 50rpx;
+  height: 50rpx;
+  padding: 20rpx;
+}
+
+.options {
+  display: flex;
+  padding: 50rpx 0 40rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.hidden {
+  display: none;
+}
+
+.rotate {
+  transition: 0.3s;
+  transform: rotate(90deg);
+}
+
+.options .option-item {
+  flex: 1;
+  text-align: center;
+  font-size: 26rpx;
+  color: #cfcfd2;
+}
+
+.options .icon {
+  width: 40rpx;
+  height: 48rpx;
+  margin-bottom: 16rpx;
+}
+
+.options .more-icon {
+  width: 52rpx;
+  height: 12rpx;
+  margin: 18rpx 0 34rpx;
+}
+
+.no-result {
+  text-align: center;
+}
+
+.no-result .icon {
+  width: 480rpx;
+}
+
+.no-result .text {
+  font-size: 30rpx;
+  color: #333;
+}

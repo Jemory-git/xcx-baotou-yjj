@@ -1,0 +1,56 @@
+.reserved-wrapper {
+  min-height: 100vh;
+  padding: 20rpx 26rpx;
+  background: #fff;  
+}
+
+.reserved {
+  margin-bottom: 100rpx;
+}
+
+.img {
+  width: 698rpx;
+  height: 374rpx;
+}
+
+.content {
+  padding: 40rpx 26rpx 0;
+}
+
+.content .text {
+  margin-bottom: 20rpx;
+  font-size: 0rpx;
+  color: #333;
+}
+
+.content .text:last-child {
+  margin-bottom: 0;
+}
+
+.content .text-l {
+  display: inline-block;
+  width: 190rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.content .text-r {
+  display: inline-block;
+  width: 450rpx;
+  vertical-align: top;
+  font-size: 28rpx;
+  color: #adadad;
+}
+
+.no-result {
+  text-align: center;
+}
+
+.no-result .icon {
+  width: 480rpx;
+}
+
+.no-result .text {
+  font-size: 30rpx;
+  color: #333;
+}

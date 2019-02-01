@@ -1,0 +1,19 @@
+<view class='wrapper' wx:if="{{showListBoo === true}}">
+  <view class="channel" wx:for="{{monitors}}" wx:key="{{item}}" 
+    data-chan_no="{{item.chan_no}}" 
+    data-status="{{item.state}}"
+    catchtap='play'>
+    <view class='channel-name'>设备{{item.chan_no}}</view>
+    <view class='monitor'>
+      <image src="{{coverImgArr[item.chan_no] ? coverImgArr[item.chan_no] : '../images/classRoom.png'}}" class='img'></image>
+      <view class='place'>
+        <image src="../images/ic_setup.png" class='icon'></image>
+        <text class='text'>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='no-result' wx:elif="{{showListBoo === false}}">
+  <image src="../images/ic_nophoto.png" class='icon'></image>
+  <view class='text'>没有找到相关内容</view>
+</view>

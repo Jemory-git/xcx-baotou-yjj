@@ -1,0 +1,56 @@
+<view class="mine-container">
+  <view class='header'>
+    <image src="../images/ic_blackground.png" class='header-bg'></image>
+    <view class='user'>
+      <!-- <image src='{{userInfo.headImgUrl}}' class='avatar'
+        binderror='imageError'
+        data-img="userInfo.headImgUrl"
+        data-src='{{userInfo.headImgUrl}}'
+        catchtap='prevImg'
+      ></image>  -->
+      <image src='{{userInfo.head_img_url}}' class='avatar'
+        binderror='imageError'
+        data-img="userInfo.headImgUrl"
+        catchtap="modify_headImg"
+      ></image> 
+      <view class='name'>{{userInfo.username}}</view>
+    </view>
+  </view>
+  <view class="options">
+    <view class='item'>
+      <navigator url="/pages/changeTel/changeTel">
+        <image src="../images/ic_phone.png" class='icon'></image>
+        <text class='text'>更换手机</text>
+      </navigator>
+    </view>
+    <view class='item' catchtap='bindCard'>
+      <image src="../images/bind.jpg" class='icon'></image>
+      <text class='text'>绑定卡号</text>
+    </view>
+    <view class='item' catchtap='logout'>
+      <image src="../images/ic_exit.png" class='icon'></image>
+      <text class='text'>退出</text>
+    </view>
+    <view class='item'>
+      <image src="../images/ic_edition.png" class='icon'></image>
+      <text class='text'>当前版本1.0.4</text>
+    </view>
+    <!-- <view class='item'>
+      <navigator url="/pages/inspectEdit/inspectEdit?si=578&fui=4">检查表单页(临时入口)</navigator>
+    </view> -->
+  </view>
+</view>
+<view class="form-wrapper {{isBind ?'' : 'hidden'}}" >
+  <form class="bind-confirm" bindsubmit="formSubmit">
+    <view class='title'>
+      <text class='text'>绑定卡号</text>
+      <image src='../images/ic_close.png' class='close' catchtap='hidden'></image>
+    </view>
+    <input name="card_no" placeholder='请输入卡号' type="number"
+          value='{{card}}'
+          maxlength="20"
+          bindinput="on_card_number_input"
+          class='card-num'></input>
+    <button formType="submit" class='complete'>确定</button>
+  </form>
+</view>

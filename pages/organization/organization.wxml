@@ -1,0 +1,78 @@
+<scroll-view class="org-container">
+  <view class='header-list'>
+    <view class='item'>
+      <text class='un-text'>{{hege_jigou_shuliang.small_data.day_food_num || 0}}</text>
+      <text class='total-text'>/{{hege_jigou_shuliang.total_data || 0}}</text>
+      <view class='text'>食品添加</view>
+    </view>
+    <view class='item'>
+      <text class='un-text'>{{hege_jigou_shuliang.small_data.purchase_receipt_num || 0}}</text>
+      <text class='total-text'>/{{hege_jigou_shuliang.total_data || 0}}</text>
+      <view class='text'>采购小票</view>
+    </view>
+    <view class='item'>
+      <text class='un-text'>{{hege_jigou_shuliang.small_data.disinfect_num || 0}}</text>
+      <text class='total-text'>/{{hege_jigou_shuliang.total_data || 0}}</text>
+      <view class='text'>餐具消毒</view>
+    </view>
+    <view class='item'>
+      <text class='un-text'>{{hege_jigou_shuliang.small_data.food_sample_num || 0}}</text>
+      <text class='total-text'>/{{hege_jigou_shuliang.total_data || 0}}</text>
+      <view class='text'>留样记录</view>
+    </view>
+    <view class='list'>
+      <navigator url="/pages/all-jigou-4item/all-jigou-4item">
+        <image src="../images/ic_liebiao.png" class='img'></image>
+        <text>详情</text>
+      </navigator>
+    </view>
+  </view>
+  <view class='search-wrapper'>
+    <image src='../images/ic_find.png' class='search-icon'></image>
+    <input class='search' placeholder='搜索机构名称' value='{{searchValue}}' bindinput="on_search_input"></input>
+    <picker class='addr-select' type="text" mode="multiSelector" maxlength="15" bindchange="pickerChange" bindcolumnchange="pickerColumnChange" range="{{shengShiQuArr}}">
+      <text class='text'>辖区</text>
+      <image src='../images/ic_down.png' class='icon' id='iconDown'></image>
+    </picker>
+  </view>
+  <view class='shadow'></view>
+  <view class="org-list" wx:if="{{hasInfo === true}}">
+    <view class="item" wx:for="{{showingArr}}" wx:key="{{index}}" catchtap='on_arrow_click' data-index="{{index}}" data-school_id="{{item.school_id}}">
+      <view class="name-wrapper">
+        <image src="{{item.headimgurl}}" class='avatar' binderror='imageError' data-img="showingArr[{{index}}].headimgurl" wx:if="{{item.headimgurl}}"></image>
+        <image src="../images/default_avatar.png" class='avatar' wx:else></image>
+        <view class='org'>
+          <view class='org-name over-ellipsis'>{{item.org_name}}-{{item.school_name}}</view>
+          <view class='org-leader'>{{item.name}}</view>
+        </view>
+        <image src='../images/more_right.png' class="more-right {{currentIndex === index ? 'rotate':''}}"></image>
+      </view>
+      <view class="options {{currentIndex === index ? '':'hidden'}}">
+        <view class='option-item' data-phone="{{item.phone}}" bindtap='call'>
+          <image src="../images/phone.png" class='icon'></image>
+          <view class='text'>手机</view>
+        </view>
+        <view class='option-item'>
+          <image src="../images/nofoods.png" class='icon' wx:if="{{zhengjianArr[index].spxkz == 0}}"></image>
+          <image src="../images/foods.png" class='icon' wx:else></image>
+          <view class='text'>食品许可证</view>
+        </view>
+        <view class='option-item'>
+          <image src="../images/business_license.png" class='icon' wx:if="{{zhengjianArr[index].yyzz == 1}}"></image>
+          <image src="../images/nobusiness_license.png" class='icon' wx:elif="{{zhengjianArr[index].yyzz == 0}}"></image>
+          <view class='text'>营业执照</view>
+        </view>
+        <view class='option-item'>
+          <navigator url="/pages/jigou-more-info/jigou-more-info?xiaoqu_id={{item.school_id}}">
+            <image src="../images/more.png" class='more-icon'></image>
+            <view class='text'>更多</view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='no-result' wx:elif="{{hasInfo === false}}">
+    <image src="../images/ic_nophoto.png" class='icon'></image>
+    <view class='text'>没有找到相关内容</view>
+  </view>
+</scroll-view>

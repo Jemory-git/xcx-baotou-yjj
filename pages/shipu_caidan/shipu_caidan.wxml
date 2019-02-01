@@ -1,0 +1,10 @@
+<view class="recipe" wx:if="{{recipesList.img.length > 0}}">
+  <!-- <view wx:for="{{recipesList}}" wx:key="{{item}}"> -->
+    <image wx:for="{{recipesList.img}}" wx:key="{{item}}" src="{{item}}" mode="{{index ===  imgId ? 'aspectFit' : 'scaleToFill'}}" class="img {{index ===  imgId ? 'img-grow' : ''}}" data-img-id="{{index}}" catchtap="yulan_img" data-current-url="{{item}}"></image>
+    <view class='text'>{{recipesList.pre_install}}</view>
+  <!-- </view> -->
+</view>
+<view class='no-result' wx:else>
+  <image src="../images/ic_nophoto.png" class='icon'></image>
+  <view class='text'>没有找到相关内容</view>
+</view>
